@@ -1,5 +1,5 @@
 // TODO
-//*   ABC 
+//*   ABC 150 A - 500 Yen Coins
 
 // 関数mainに標準入力をinputとして受け取る
 function main(input) {
