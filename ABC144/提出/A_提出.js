@@ -1,21 +1,19 @@
 // TODO
-//*   ABC 188 A - Three-Point Shot
+//*   ABC 144 A - 9x9
 
 // 関数mainに標準入力をinputとして受け取る
 function main(input) {
     'use strict';
-    const [a, b] = input.split(' ').map(n => parseInt(n, 10));
-    // console.log([a, b]);
-    //* ------------------------------
-    let low = Math.min([a], [b]);
-    let high = Math.max([a], [b]);
+    input = input.split(' ');
+    const a = parseInt(input[0], 10);
+    const b = parseInt(input[1], 10);
+    //* -------------------------------
 
-    if(low + 3 > high) {
-        console.log('Yes');
-    } else {
-        console.log('No');
-    }
-
+    let ans = -1;
+    if(a < 10 && b < 10) {
+        ans = a*b;
+    } 
+    console.log(ans);
 }
 //*この行以降は編集しないでください（標準入出力から一度に読み込み、Mainを呼び出します）
 main(require('fs').readFileSync('/dev/stdin', 'utf8'));
