@@ -21,6 +21,7 @@ function main(input) {
         // pushして、空配列に格納する
         list.push(obj);
     }
+    console.log(list);
     //* ------------------------------------------------------
     list.sort(function(a, b) {
         //* 名前順にソート（辞書順）
@@ -30,6 +31,7 @@ function main(input) {
         if (a.point < b.point) return 1
         if (a.point > b.point) return -1
     })
+    console.log(list);
     //* -----------------------------------------------------
     list.forEach(n => {
         console.log(n.no);
@@ -37,5 +39,5 @@ function main(input) {
 }
 
 //*この行以降は編集しないでください（標準入出力から一度に読み込み、Mainを呼び出します）
-main(require('fs').readFileSync('/dev/stdin', 'utf8'));
-// main(require('fs').readFileSync('../txt/B.txt', 'utf8'));
+// main(require('fs').readFileSync('/dev/stdin', 'utf8'));
+main(require('fs').readFileSync('../txt/B.txt', 'utf8'));
