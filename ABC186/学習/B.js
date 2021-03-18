@@ -27,7 +27,9 @@ function main(input) {
     let ans = 0;
     for(let i = 0; i < h; i++) {
         for(let j =0; j < w; j++) {
-            ans += arr[i][j] - min;
+            if (arr[i][j] > min) {
+                ans += arr[i][j] - min;
+            }
         }
     }
     console.log(ans);
