@@ -15,22 +15,23 @@ function main(input) {
         [a[i], b[i]] = input[i + 1].split(' ').map(n => parseInt(n, 10));
     }
     //* ---------------------------------------------------------
+    console.log(a);
+    console.log(b);
+    //* ---------------------------------------------------------
     let time = 0;
     let battery = n;
     
     for(let i = 0; i < m; i++) {
         let start = a[i];
         let end = b[i];
-        //* stayは回復、useは使用した時間
         const stay = end - start;
         const use = start - time;
         battery -= use;
         if(battery <= 0) {
             return console.log('No');
         }
-
-        battery += stay;
         
+        battery += stay;
         if(battery > n) {
             battery = n;
         }
@@ -43,7 +44,10 @@ function main(input) {
     } else {
         console.log("No");
     }
+
+
+
 }
 //*この行以降は編集しないでください（標準入出力から一度に読み込み、Mainを呼び出します）
-main(require('fs').readFileSync('/dev/stdin', 'utf8'));
-// main(require('fs').readFileSync('../txt/B.txt', 'utf8'));
+// main(require('fs').readFileSync('/dev/stdin', 'utf8'));
+main(require('fs').readFileSync('../txt/B.txt', 'utf8'));
