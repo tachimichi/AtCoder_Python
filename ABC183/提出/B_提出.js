@@ -1,21 +1,15 @@
 // TODO
-//*   ABC 184 B - Quizzes
+//*   ABC 183 B - Billiards
 
 // 関数mainに標準入力をinputとして受け取る
 function main(input) {
     'use strict';
-    input = input.split('\n');
-    let [n, x] = input[0].split(' ').map(n => parseInt(n, 10));
-    let s = input[1].split('');
-    //* ---------------------------------------------------------
-    for(let i = 0; i < n; i++) {
-        if(s[i] === 'o') {
-            x++;
-        } else {
-            if(x > 0) x--;
-        }
-    }
-    console.log(x);
+    let [x, y, a, b] = input.split(' ').map(n => parseInt(n, 10));
+    const sum = (a - x) / 3;
+
+    let ans = ((x*b) + (a*y)) / (y + b);
+
+    console.log(ans);
 }
 //*この行以降は編集しないでください（標準入出力から一度に読み込み、Mainを呼び出します）
 main(require('fs').readFileSync('/dev/stdin', 'utf8'));
