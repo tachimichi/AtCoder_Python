@@ -1,20 +1,44 @@
 // TODO
-//*   ABC 182 B - Trapezoid Sum
+//*   ABC 180 B - Various distances
 
 // 関数mainに標準入力をinputとして受け取る
 function main(input) {
     'use strict';
     input = input.trim().split('\n');
-    let n = parseInt(input[0], 10);
-    //* ---------------------------------
+    const n = parseInt(input[0], 10);
+    let arr = input[1].split(' ').map(n => parseInt(n, 10));
+    //* ---------------------------------------
+    const ans1 = Manhattan(arr);
+    const ans2 = Euclid(arr);
+    const ans3 = Chebyshev(arr);
+    
+    console.log(ans1);
+    console.log(ans2);
+    console.log(ans3);
+}
+
+function Manhattan(arrayData) {
     let sum = 0;
-    for(let i = 1; i <= n; i++) {
-        let ab = input[i].split(' ').map(n => parseInt(n, 10));
-        const a = ab[0];
-        const b = ab[1];
-        sum += (a+b)*(b-a+1)/2;
+    for(let i = 0; i < arrayData.length; i++) {
+        sum += Math.abs(arrayData[i]);
     }
-    console.log(sum);
+    return sum;
+}
+function Euclid(arrayData) {
+    let sum = 0;
+    for(let i = 0; i < arrayData.length; i++) {
+        sum += Math.pow(arrayData[i], 2);
+    }
+    sum = Math.pow(sum, 1 /2);
+    return sum;
+}
+
+function Chebyshev(arrayData) {
+    let abs = [];
+    for(let i = 0; i < arrayData.length; i++) {
+        abs.push(Math.abs(arrayData[i]));
+    }
+    return Math.max(...abs);
 }
 //*この行以降は編集しないでください（標準入出力から一度に読み込み、Mainを呼び出します）
 // main(require('fs').readFileSync('/dev/stdin', 'utf8'));

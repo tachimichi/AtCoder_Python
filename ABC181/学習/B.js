@@ -1,5 +1,5 @@
 // TODO
-//*   ABC 182 B - Trapezoid Sum
+//*   ABC 181 B - Trapezoid Sum
 
 // 関数mainに標準入力をinputとして受け取る
 function main(input) {
