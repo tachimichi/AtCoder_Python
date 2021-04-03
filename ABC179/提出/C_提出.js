@@ -7,7 +7,7 @@ function main(input) {
     let n = parseInt(input, 10);
     let array = [];
     //* ------------------------------
-    for(let i = 1; i * i <= n; i++) {
+    for(let i = 1; i <= n / 2; i++) {
         let x = n / i;
         if(Number.isInteger(x)) {
             array.push(x, i);
