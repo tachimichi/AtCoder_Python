@@ -1,24 +1,24 @@
 // TODO
-//*   ABC 177 C - Sum of product of pairs
+//*   ABC 176 C - Step
 
 // 関数mainに標準入力をinputとして受け取る
 function main(input) {
     'use strict';
     input = input.trim().split('\n');
     const n = parseInt(input[0], 10);
-    let a = input[1].split(' ').map(n => BigInt(n, 10));
-    //* ----------------------------------
-    let mod = 1000000007n;
-    let sum = 0n;
-    let x = 0n;
-    
-    for(let i = 0n; i < n; i ++) {
-        sum += a[i] * x;
-        x += a[i];
-    }
+    let a = input[1].split(' ').map(n => parseInt(n, 10));
+    //* ----------------------------
+    // console.log(a);
 
-    let ans = sum % mod;
-    console.log(ans.toString());
+    let sum = 0;
+    for(let i = 0; i < n; i++) {
+        if(a[i] > a[i+1]) {
+            let x = (a[i] - a[i+1]);
+            sum += x;
+            a[i+1] += x;
+        }
+    }
+    console.log(sum);
 }
 //*この行以降は編集しないでください（標準入出力から一度に読み込み、Mainを呼び出します）
 try {
