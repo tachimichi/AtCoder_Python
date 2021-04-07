@@ -1,31 +1,24 @@
 // TODO
-//*   ABC 178 C - Ubiquity
+//*   ABC 177 C - Sum of product of pairs
 
 // 関数mainに標準入力をinputとして受け取る
 function main(input) {
     'use strict';
-    const int = parseInt(input, 10);
-    console.log(int);
-    const n = BigInt(input.trim());
-    console.log(n);
-    //* ----------------------------
-    let a = 10;
-    let b = 9;
-    let c = 8;
-    let mod = 1e9+7;
-    //* -----------------------------
-    for (let i = 1; i < n; i++) {
-        a = (10 * a) % mod;
-        b = (9 * b) % mod;
-        c = (8 * c) % mod;
-        console.log(a, b, b, c);
-    }
-    let ans = (a - 2 * b + c) % mod;
-    console.log(a - 2 * b + c);
-    console.log(ans);
-    //* 
-    console.log((ans + mod) % mod);
+    input = input.trim().split('\n');
+    const n = parseInt(input[0], 10);
+    let a = input[1].split(' ').map(n => BigInt(n, 10));
+    //* ----------------------------------
+    let mod = 1000000007n;
+    let sum = 0n;
+    let x = 0n;
     
+    for(let i = 0n; i < n; i ++) {
+        sum += a[i] * x;
+        x += a[i];
+    }
+
+    let ans = sum % mod;
+    console.log(ans.toString());
 }
 //*この行以降は編集しないでください（標準入出力から一度に読み込み、Mainを呼び出します）
 try {
