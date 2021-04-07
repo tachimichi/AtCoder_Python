@@ -1,24 +1,32 @@
 // TODO
-//*   ABC 176 C - Step
+//*   ABC 177 C - Walking Takahashi
 
 // 関数mainに標準入力をinputとして受け取る
 function main(input) {
     'use strict';
     input = input.trim().split('\n');
-    const n = parseInt(input[0], 10);
-    let a = input[1].split(' ').map(n => parseInt(n, 10));
+    let [x, k, d] = input[0].split(' ').map(n => parseInt(n, 10));
     //* ----------------------------
-    // console.log(a);
+    // 負でも「座標の絶対値」なので、abs
+    x = Math.abs(x);
 
-    let sum = 0;
-    for(let i = 0; i < n; i++) {
-        if(a[i] > a[i+1]) {
-            let x = (a[i] - a[i+1]);
-            sum += x;
-            a[i+1] += x;
-        }
+    //* xをd（移動距離）で割った数（最低でもまっすぐに進む回数）
+    let staright = Math.floor(x/d);
+    //* xをd（移動距離）で割ったあまり
+    let r = x % d;
+
+    //* k回では近づくことが無理な場合
+    if(staright >= k) return console.log(x - d*k);
+    //* 余分に移動する回数
+    let urouro = k - staright;
+
+    if(urouro % 2 === 0) {
+        //* 偶数なら、現在地
+        console.log(r);
+    } else {
+        //* 奇数なら、一回分の距離を考慮
+        console.log(Math.abs(r - d));
     }
-    console.log(sum);
 }
 //*この行以降は編集しないでください（標準入出力から一度に読み込み、Mainを呼び出します）
 try {
