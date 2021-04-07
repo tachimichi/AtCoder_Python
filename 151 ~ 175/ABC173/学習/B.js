@@ -10,7 +10,7 @@ function main(input) {
     for(let i = 1; i <= n; i++) {
         s.push(input[i].trim());
     }
-    // console.log(s);
+    console.log(s);
     //* -------------------------------------
     let ac =0;
     let wa =0;
