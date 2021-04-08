@@ -18,11 +18,17 @@ function main(input) {
 
     let ans = 0;
 
+    //* h行,w列を塗るか塗らないか2進数で判断
     for(let yoko = 0; yoko < (1 << h); yoko++) {
         for(let tate = 0; tate < (1 << w); tate++) {
+            console.log(`行：${yoko}`);
+            console.log(`列：${tate}`);
+            console.log(`-------------------`);
             let black = 0;
             for(let i =0; i < h; i++) {
                 for(let j =0; j < w; j++) {
+                    //* 右シフト演算（桁を一つ減らす） & 1（Yesの判定箇所）
+                    //* 論理積 ==0（塗らない所）&& '#'なら、黒としてカウント
                     if(((yoko >> i) & 1) == 0 
                         && ((tate >> j) & 1) == 0
                         && n[i][j] == '#' ) black++;
