@@ -1,31 +1,14 @@
 // TODO
-//*   ABC 168 A - ∴ (Therefore) 
+//*   ABC 166 A - A?C
 
 // 関数mainに標準入力をinputとして受け取る
 function main(input) {
     'use strict';
-    const n = parseInt(input, 10);
-    const keta = n % 10;
-    //* -----------------------
-    switch (keta) {
-        case 2:
-        case 4:
-        case 5:
-        case 7:
-        case 9:
-            console.log('hon');
-            break;
-    
-        case 0:
-        case 1:
-        case 6:
-        case 8:
-            console.log('pon');
-            break;
-
-        default:
-            console.log('bon');
-            break;
+    input = input.trim();
+    if(input == 'ABC') {
+        console.log('ARC');
+    } else {
+        console.log('ABC');
     }
 }
 
