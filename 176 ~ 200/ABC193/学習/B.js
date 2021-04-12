@@ -43,5 +43,14 @@ function main(input) {
 }
 //*この行以降は編集しないでください（標準入出力から一度に読み込み、Mainを呼び出します）
 // '/dev/stdin'に判定用のデータが格納されていると考えられる。
-// main(require('fs').readFileSync('/dev/stdin', 'utf8'));
-main(require('fs').readFileSync('../txt/B.txt', 'utf8'));
+try {
+    main(require('fs').readFileSync('/dev/stdin', 'utf8'));
+} catch (error1) {
+    try {
+    main(require('fs').readFileSync('../txt/B.txt', 'utf8'));
+    } catch (error2) {
+        console.log('error2', error2);
+        console.log('----------------------------');
+        console.log('error1', error1);
+    }
+}
