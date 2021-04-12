@@ -1,5 +1,5 @@
 // TODO
-//*   ABC 168 B - ... (Triple Dots)
+//*   ABC 198 B - Easy Linear Programming
 
 // 関数mainに標準入力をinputとして受け取る
 function main(input) {
