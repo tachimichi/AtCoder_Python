@@ -60,5 +60,8 @@ function getSumOfDigits(value) {
 
 //*この行以降は編集しないでください（標準入出力から一度に読み込み、Mainを呼び出します）
 // '/dev/stdin'に判定用のデータが格納されていると考えられる。
-// main(require('fs').readFileSync('/dev/stdin', 'utf8'));
-main(require('fs').readFileSync('../txt/5_ABC083B.txt', 'utf8'));
+try {
+    main(require('fs').readFileSync('../txt/5_ABC083B.txt', 'utf8'));
+} catch (error) {
+    main(require('fs').readFileSync('/dev/stdin', 'utf8'));
+}

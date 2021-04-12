@@ -69,5 +69,8 @@ function reverseString(str) {
 }
 
 //*この行以降は編集しないでください（標準入出力から一度に読み込み、Mainを呼び出します）
-// main(require('fs').readFileSync('/dev/stdin', 'utf8'));
-main(require('fs').readFileSync('../txt/9_ABC049C.txt', 'utf8'));
+try {
+    main(require('fs').readFileSync('../txt/9_ABC049C.txt', 'utf8'));
+} catch (error) {
+    main(require('fs').readFileSync('/dev/stdin', 'utf8'));
+}
