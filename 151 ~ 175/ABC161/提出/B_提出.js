@@ -1,20 +1,28 @@
 // TODO
-//*   ABC 162 B - FizzBuzz Sum
+//*   ABC 161 B - Popular Vote
 
 // 関数mainに標準入力をinputとして受け取る
 function main(input) {
     'use strict';
-    const n = parseInt(input, 10);
+    input = input.trim().split('\n');
+    const [n, m] = input[0].split(' ').map(n =>parseInt(n, 10));
+    const a = input[1].split(' ').map(n =>parseInt(n, 10));
     // -----------------------
+    // console.log(a);
+    a.sort((a,b) => b - a);
+    // console.log(a);
+    
     let sum = 0;
-    for(let i = 1; i <=n; i++) {
-        if(i % 3 === 0 || i % 5 === 0) {
-            continue;
-        } else {
-            sum += i;
-        }
+    for(let i = 0; i < n; i++) {
+        sum += a[i];
     }
-    console.log(sum);
+
+    if(a[m-1] >= sum/(4*m)) {
+        console.log('Yes');
+    } else {
+        console.log('No');
+    }
+
 }
 
 
