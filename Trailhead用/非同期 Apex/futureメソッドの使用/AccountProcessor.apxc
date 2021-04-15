@@ -1,0 +1,25 @@
+/* 外部サービスまたは API への Web サービスコールアウトを実行するには、
+(callout=true) でマークされた future メソッドを使用して Apex クラスを作成
+*/
+public class AccountProcessor {
+    @future(callout=true)
+    public static void countContacts(List<id> accIds) {
+        // 取引先のリストを作成
+        List<Account> accList = new List<Account>();
+            // 
+            for(AggregateResult ar : [SELECT AccountId a, COUNT(Id) c
+                                                    FROM Contact
+                                                    WHERE AccountID in :accIds
+                                                    GROUP BY AccountId
+                                                    ]) {
+                                                //* 上記が条件式
+                //* リストに追加
+                // 
+                accList.add(
+                    new Account(Id = (Id) ar.get('a'),
+                                Number_of_Contacts__c = (Decimal) ar.get('C')
+                    ));    
+            }
+            update accList;
+    }
+}

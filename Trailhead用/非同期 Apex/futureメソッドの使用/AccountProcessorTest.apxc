@@ -1,0 +1,32 @@
+
+
+@IsTest
+public class AccountProcessorTest {
+    public static testmethod void TestAccountProcessorTest() {
+        
+        //* 取引先のテストデータを作成
+        Account a = new Account();
+        a.Name = 'Test Account';
+        Insert a;
+        
+        //* 取引先責任者のテストデータ作成
+        Contact c = New Contact();
+        c.LastName ='Test Contact';
+        c.AccountId = a.Id;
+        Insert c;
+        
+        //* Idのリストを作成、a.Idを追加
+        List<Id> setAccId = new List<Id>();
+        setAccId.add(a.id);
+        
+        // テスト開始
+        System.Test.startTest();
+        AccountProcessor.countContacts(setAccId);
+        System.Test.stopTest();
+        
+        //* テスト実行したので、結果を取得する
+        Account Acc = [SELECT Number_of_Contacts__c FROM Account WHERE id = :a.id LIMIT 1];
+        //* 取得した結果 == 1 であればOK
+        System.assertEquals ( Integer.valueOf(Acc.Number_of_Contacts__c) ,1);
+    }
+}
