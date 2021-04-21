@@ -1,11 +1,18 @@
 // TODO
-//*   ABC 159 C - Maximum Volume
+//*   ABC 158 C - Tax Increase
 // 関数mainに標準入力をinputとして受け取る
 function main(input) {
     'use strict';
-    const l = parseInt(input, 10);
-    // -----------------------------
-    console.log((l/3)*(l/3)*(l/3));
+    const [a, b] = input.trim().split(' ').map(n => parseInt(n, 10));
+    //* -------------------
+    let min = 1010; //* 1010以上の場合、10%=>101円となる
+
+    for(let i = 0; i < 1010; i++) {
+        let t1 = Math.floor(i*0.08);
+        let t2 = Math.floor(i*0.1);
+        if(t1 == a && t2 == b) return console.log(i);
+    }
+    console.log(-1);
 }
 
 
