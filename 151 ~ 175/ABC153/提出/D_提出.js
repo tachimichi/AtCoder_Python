@@ -1,19 +1,24 @@
 // TODO
-//*   ABC 154 A - Remaining Balls
+//*   ABC 153 D - Caracal vs Monster
 
 // 関数mainに標準入力をinputとして受け取る
 function main(input) {
     'use strict';
-    input = input.trim().split('\n');
-    const [s, t] = input[0].split(' ');
-    const [a, b] = input[1].split(' ').map(n => parseInt(n, 10));
-    const u = input[2];
+    let h = parseInt(input, 10);
     //* -------------------------------------
-    if(s == u) {
-        console.log(a-1, b);
-    } else {
-        console.log(a, b-1);
+    let sum = 1;
+    let counter = 1;
+
+    while(h > 1) {
+        //* 例：5 => 2 2 => 1 1 1 1
+        h = Math.floor(h/2);
+
+        //* 次の処理のステップ式
+        counter = counter*2;
+        sum += counter;
     }
+    // console.log(counter);
+    console.log(sum);
 }
 
 //*この行以降は編集しないでください（標準入出力から一度に読み込み、Mainを呼び出します）

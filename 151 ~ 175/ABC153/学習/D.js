@@ -1,5 +1,5 @@
 // TODO
-//*   ABC 153 A - Serval vs Monster
+//*   ABC 153 D - Caracal vs Monster
 
 // 関数mainに標準入力をinputとして受け取る
 function main(input) {
