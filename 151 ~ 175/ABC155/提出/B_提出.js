@@ -1,5 +1,5 @@
 // TODO
-//*   ABC 156 B - Digits
+//*   ABC 155 B - Papers, Please
 
 // 関数mainに標準入力をinputとして受け取る
 function main(input) {

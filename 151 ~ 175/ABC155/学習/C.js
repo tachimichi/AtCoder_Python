@@ -1,5 +1,5 @@
 // TODO
-//*   ABC 156 C - Rally
+//*   ABC 155 C - Poll
 // 関数mainに標準入力をinputとして受け取る
 function main(input) {
     'use strict';
