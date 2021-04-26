@@ -1,5 +1,5 @@
 // TODO
-//*   004 - Cross Sum
+//*   022 - Cubic Cake
 
 // 関数mainに標準入力をinputとして受け取る
 function main(input) {
