@@ -1,5 +1,5 @@
 // TODO
-//*   ABC 198 A - Div
+//*   ABC 199 A - Square Inequality
 
 // 関数mainに標準入力をinputとして受け取る
 function main(input) {

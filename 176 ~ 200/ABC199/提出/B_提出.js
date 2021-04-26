@@ -1,5 +1,5 @@
 // TODO
-//*   ABC 198 B - Palindrome with leading zeros
+//*   ABC 199 B - Intersection
 
 function main(input) {
     'use strict';
@@ -11,10 +11,12 @@ function main(input) {
     let min = 0;
     let max = 1000;
     for(let i = 0; i < n; i++) {
-        min = Math.min(min, a[i]);
-        max = Math.max(max, b[i]);
+        min = Math.max(min, a[i]); //* A<=tの条件を満たす中でも最大を全探索
+        max = Math.min(max, b[i]); //* t<=Bの条件を満たす中でも最小を全探索
     }
-    let t = max - min;
+    
+    let t = max - min; //* 差を求める
+
     if(t >= 0) {
         console.log(t+1);
     } else {
