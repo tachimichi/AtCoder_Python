@@ -1,0 +1,7 @@
+
+<!-- TODO challenge 5 -->
+<!--* コンポーネントイベントで新規作成 -->
+<!--* 選択したboatId1(String)を引数とする  -->
+<aura:event type="Component" description="">
+    <aura:attribute name="boatId" type="String"/>
+</aura:event>
