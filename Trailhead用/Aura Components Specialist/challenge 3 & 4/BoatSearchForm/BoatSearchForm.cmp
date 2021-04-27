@@ -32,11 +32,11 @@
                 
                 <!--* Searchボタン -->
                 <lightning:layoutItem class="slds-m-vertical_x-small slds-m-horizontal_xxx-small">
+                    <!-- TODO challenge 4  -->
+                    <!--* コントローラのonFormSubmitを起動-->
                     <lightning:button label="Search" 
                                             variant="brand"
                                             class="slds-m-top--xx-small"
-                                            <!--TODO challenge 4  -->
-                                            <!--* コントローラのonFormSubmitを起動-->
                                             onclick="{!c.onFormSubmit}"/> 
                 </lightning:layoutItem>
                 
