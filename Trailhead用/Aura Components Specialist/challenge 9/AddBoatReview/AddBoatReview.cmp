@@ -1,0 +1,61 @@
+
+<!--TODO challenge 7  -->
+<!--* 新規作成 -->
+
+<aura:component >
+    <!-- 属性の設定 -->
+    <aura:attribute name="boat" type="Boat__c" access="public"/>
+    <aura:attribute name="boatReview" type="BoatReview__c" access="private"/>
+    <aura:attribute name="recordError" type="String" access="private"/>
+    <!-- 受信ハンドラの設定 -->
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}"/>
+    <!-- イベントの登録 -->
+    <aura:registerEvent name="boatReviewAdded" type="c:BoatReviewAdded"/>  
+    
+    <!-- TODO challenge 7  -->
+    <!-- * レコード情報を定義する  -->
+    <!-- TODO challenge 9 -->
+    <!-- * 星5評価の項目を追加する  -->
+    <force:recordData aura:id="service"
+                                    targetFields="{!v.boatReview}"
+                                    fields="Id,
+                                            Name,
+                                            Comment__c,
+                                            Boat__c,
+                                            Rating__c"
+                                    recordUpdated="{!c.onRecordUpdated}"
+                                    targetError="{!v.recordError}"/>
+    
+    <lightning:layout multipleRows="true">
+        <!-- TODO challenge 7 -->
+        <!-- * タイトル -->
+        <lightning:layoutItem size="12" padding="around-small">
+            <lightning:input name="title" label="Title" value="{!v.boatReview.Name}" variant="label-stacked" />
+        </lightning:layoutItem>
+        
+        <!-- TODO challenge 7 -->
+        <!-- * コメント（リッチテキスト） -->
+        <lightning:layoutItem size="12" padding="around-small">
+            <lightning:inputRichText label="Description"
+                                                value="{!v.boatReview.Comment__c}"
+                                                placeholder="Comment" 
+                                                variant="label-stacked" 
+                                                labelVisible="true" 
+                                                disabledCategories="FORMAT_FONT" />
+        </lightning:layoutItem>
+        
+        <lightning:layoutItem size="12" padding="around-small">
+            <!-- TODO challenge 9 -->
+            <!-- * 星5評価のコンポーネントを配置する -->
+            <c:FiveStarRating value="{!v.boatReview.Rating__c}" readonly="false"/>
+        </lightning:layoutItem>
+        
+        <!-- TODO challenge 7 -->
+        <!-- * submitボタン / onSaveアクション -->
+        <lightning:layoutItem size="12" class="slds-align--absolute-center">
+            <lightning:button label="Submit" iconName="utility:save" onclick="{!c.onSave}" />
+        </lightning:layoutItem>
+    </lightning:layout>
+    
+	
+</aura:component>
