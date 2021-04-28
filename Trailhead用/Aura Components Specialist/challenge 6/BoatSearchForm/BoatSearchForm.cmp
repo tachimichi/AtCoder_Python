@@ -1,0 +1,60 @@
+<aura:component controller="BoatSearchResults">
+    
+    <!--* 属性の記述  -->
+    <aura:attribute name="boatTypes" type='List' default='[]'/>
+    <aura:attribute name="showNewButton" type='Boolean' default='false'/>
+    
+    <!--* イベントを起動するコンポーネントの <aura:registerEvent> タグの name 属性に一致する必要がある  -->
+    <aura:handler name="init" value="{!this}" action="{!c.initBoatSearchForm}"/>
+    <!--* イベントを起動できるように登録  -->
+    <aura:registerEvent name="formsubmit" type="c:FormSubmit"/>   
+    
+    <!--  -->
+    <lightning:layout horizontalAlign="center">
+        
+        <form class="slds-form_horizontal slds-form slds-grid slds-wrap"> 
+            <div class="slds-grid">
+                
+                <lightning:layoutItem class="slds-var-m-around_x-small" size="8">
+                    <!--* BoatTypeを選択する選択リスト  -->
+                    <lightning:select aura:id="boatTypeSelect" 
+                                                    label=""
+                                                    variant="label-hidden">
+                        <!--* ロード時のアクションでBoatTypeを取得して、選択リストに反映（All Typesも選択肢に加える） -->
+                        <option value="">All Types</option>
+                        <aura:iteration items='{!v.boatTypes}' var='item'>
+                            <option value='{!item.Id}' text='{!item.Name}'></option>
+                        </aura:iteration>
+                        
+                    </lightning:select> 
+
+                </lightning:layoutItem>
+                
+                <!--* Searchボタン -->
+                <lightning:layoutItem class="slds-m-vertical_x-small slds-m-horizontal_xxx-small">
+                    <!-- TODO challenge 4  -->
+                    <!--* コントローラのonFormSubmitを起動-->
+                    <lightning:button label="Search" 
+                                            variant="brand"
+                                            class="slds-m-top--xx-small"
+                                            onclick="{!c.onFormSubmit}"/> 
+                </lightning:layoutItem>
+                
+                <!--* Newボタン -->
+                <aura:if isTrue="{!v.showNewButton}">
+                    <lightning:layoutItem class="slds-m-vertical_x-small slds-m-horizontal_xxx-small">   
+                        <lightning:button label="New" 
+                                                variant="neutral"
+                                                class="slds-m-top--xx-small"
+                                                onclick="{!c.createNewBoat}"/>
+                    </lightning:layoutItem>
+                </aura:if>
+                
+            </div>
+        </form>
+        
+        
+    </lightning:layout>
+    
+    
+</aura:component>

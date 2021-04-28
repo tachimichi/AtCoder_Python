@@ -1,0 +1,6 @@
+
+<!--TODO challenge 6  -->
+<!--* 引数はboat(Boat__c) -->
+<aura:event type="APPLICATION" description="">
+    <aura:attribute name="boat" type="Boat__c"/>
+</aura:event>
