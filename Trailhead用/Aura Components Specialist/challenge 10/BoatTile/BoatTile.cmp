@@ -1,0 +1,33 @@
+<aura:component >
+
+    <!--TODO challenge 5 -->
+    <!--* イベントの初期設定 -->
+    <aura:registerEvent name="boatselect" type="c:BoatSelect"/>
+    <!--TODO challenge 6 -->
+    <!--* BoatSelectedイベントを登録 -->
+    <!--TODO challenge 10 -->
+    <!--* plotMapMarkerイベントを登録 -->
+    <aura:registerEvent name="boatselected" type="c:BoatSelected"/>
+    <aura:registerEvent name="plotMapMarker" type="c:PlotMapMarker"/>
+    
+    <aura:attribute name="boat" type="Boat__c"/>
+    <!--TODO challenge 5 -->
+    <!--* 選択中か否かを表すアトリビュート(Boolean型)を定義 -->
+    <aura:attribute name="selected" type="Boolean" default="false"/>
+    
+    <!--* タイル表示できるように表示する -->
+    <!--? ボタンのアクションについては、challenge 3で扱わない -->
+    <!--TODO challenge 5 -->
+    <!--* buttonタグのクラスをtrue/falseで、スタイルを変更する -->
+    <!--* trueの場合、cssを適用する -->
+    <lightning:button class="{! v.selected ? 'tile selected' : 'tile'}" onclick="{!c.onBoatClick}">
+        <!--* 画像をセットする  -->
+        <div style="{!'background-image: url(' + v.boat.Picture__c + ')'}" class="innertile">
+            <div class="lower-third">
+                <!--* 取引先責任者の名前を表示する -->
+                <h1 class="slds-truncate">{!v.boat.Contact__r.Name}</h1>
+            </div>
+        </div>
+    </lightning:button>
+    
+</aura:component>
