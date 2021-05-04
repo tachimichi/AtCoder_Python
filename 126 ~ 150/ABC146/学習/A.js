@@ -1,15 +1,33 @@
 // TODO
-//*   ABC 147 A - Blackjack
+//*   ABC 146 A - Can't Wait for Holiday
 
 // 関数mainに標準入力をinputとして受け取る
 function main(input) {
     'use strict';
-    const a = input.trim().split(' ').map(n => parseInt(n, 10));
-    let sum = a[0]+a[1]+a[2];
-    if(sum>21) {
-        console.log('bust');
-    } else {
-        console.log('win');
+    const str = input.trim();
+
+    switch (str) {
+        case "SAT":
+            console.log(1);
+            break;
+        case "SUN":
+            console.log(7);
+            break;
+        case "MON":
+            console.log(6);
+            break;
+        case "TUE":
+            console.log(5);
+            break;
+        case "WED":
+            console.log(4);
+            break;
+        case "THU":
+            console.log(3);
+            break;
+        case "FRI":
+            console.log(2);
+            break;
     }
 
 }
