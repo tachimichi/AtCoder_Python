@@ -1,5 +1,0 @@
-
-<!-- TODO challenge 7 -->
-<!--* コンポーネントイベントで新規作成 -->
-<!--* 渡す情報は不要 -->
-<aura:event type="COMPONENT" description="Event template" />

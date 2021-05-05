@@ -1,8 +1,0 @@
-
-<!-- TODO challenge 10 -->
-<!-- * 幅(width)と高さ(height)を定義する -->
-
-<design:component label="Map">
-    <design:attribute name="width" label="Width" />
-    <design:attribute name="height" label="Height" />
-</design:component>
