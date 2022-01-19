@@ -231,7 +231,7 @@ class PokerGame:
         # 捨てるカードの候補
         self.game_card.clear_selectes()
         # 捨てるカードの選択
-        While true:
+        While True:
             self.term.clear()
             print('{}回目'.format(turn))
             self.game_card.shoe_hand()
