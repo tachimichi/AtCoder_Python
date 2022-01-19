@@ -133,7 +133,7 @@ class Judge:
         return True
     # ストレートフラッシュどうか調べる
     def judge_straight_flush(self):
-        return self.judge_flush() && self.judge_straight()
+        return self.judge_flush() & self.judge_straight()
     
     # カードの数値だけ取り出す
     def get_only_numbers(self):
