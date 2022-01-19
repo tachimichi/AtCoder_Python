@@ -85,14 +85,14 @@ class Card:
             num_string = str(i)
             if i in self.selects:
                 num_string = '*' + num_string
-                # 右添えの5桁で表示
+                # 右揃えの5桁で表示
                 print('{:>5}'.format(num_string), end='')
         print()
         # カード情報を取得
         for card in self.hand:
             card_kind = self.get_kind(card['kind'])
             card_number = self.get_num(card['num'])
-            # 右添えの2桁で表示
+            # 右揃えの2桁で表示
             print('{}{:>2}'.format(card_kind, card_number), end='')
         print()
 
@@ -161,7 +161,7 @@ class Judge:
         for n in numbers:
             # それぞれの数値のダブりをカウントする
             if numbers.count(n) == 2:
-                count += 1
+                count = count + 1
         # カウント重複の削除
         count //= 2
         return count
@@ -207,7 +207,7 @@ class Judge:
             # ワンペア
             hand_name = 'ワンペア'
             score = 100
-        print('{}score:{}'.format(hand_name, score))
+        print('{} score:{}'.format(hand_name, score))
 
 class PokerGame:
     # ポーカーのメイン処理クラス
@@ -229,12 +229,12 @@ class PokerGame:
     # メインのゲーム処理
     def game_main(self, turn):
         # 捨てるカードの候補
-        self.game_card.clear_selectes()
+        self.game_card.clear_selects()
         # 捨てるカードの選択
-        While True:
+        while True:
             self.term.clear()
             print('{}回目'.format(turn))
-            self.game_card.shoe_hand()
+            self.game_card.shoｗ_hand()
             n = self.input_data()
             if n >= 1 and n <= 5:
                 self.game_card.select_card(n)
@@ -266,7 +266,7 @@ class PokerGame:
             num = int(s)
         except ValueError:
             return -2
-        if n >= 0 and num <= 5:
+        if num >= 0 and num <= 5:
             return num
         else:
             return -2
@@ -274,9 +274,9 @@ class PokerGame:
     # ゲーム終了
     def game_end(self):
         # ターミナルのクリア
-        self.trem_clear()
+        self.term.clear()
         print('ゲーム終了')
         # 手札の表示
-        self.game_card.shoe_hand()
+        self.game_card.show_hand()
         # 結果の判定
         self.game_card.judge()
