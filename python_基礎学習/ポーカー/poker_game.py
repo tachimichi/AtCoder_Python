@@ -2,9 +2,6 @@ import random
 import itertools
 import os
 
-from numpy import append
-
-
 class Terminal:
     # OS依存の処理
     def __init__(self):
@@ -26,8 +23,7 @@ class Card:
     # カードクラス
     def __init__(self):
         # トランプカード（内包表記）
-        self.cards = [{'kind': kind, 'num': num}
-                      for kind, num in itertools.product(range(1, 1+4), range(1, 1+13))]
+        self.cards = [{'kind': kind, 'num': num} for kind, num in itertools.product(range(1, 1+4), range(1, 1+13))]
 
         # カードのシャッフル
         random.shuffle(self.cards)
@@ -118,6 +114,100 @@ class Card:
         # 結果の判定
         judge.judge()
 
+
+class Judge:
+    # ポーカーの役を判定するクラス
+    def __init__(self, hand):
+        self.hand = hand
+    # フラッシュかどうか調べる
+    def judge_flush(self):
+        for i in range(4):
+            if self.hand[i]['kind'] != self.hand[i+1]['kind']:
+                return False
+        return True
+    # ストレートかどうか調べる
+    def judge_straight(self):
+        for i in range(4):
+            if self.hand[i]['num']+1 != self.hand[i+1]['num']:
+                return False
+        return True
+    # ストレートフラッシュどうか調べる
+    def judge_straight_flush(self):
+        return self.judge_flush() && self.judge_straight()
+    
+    # カードの数値だけ取り出す
+    def get_only_numbers(self):
+        numbers = []
+        # カードから数値だけ
+        for card in self.hand:
+            numbers.append(card['num'])
+            return numbers
+
+    # 指定した数値の重複があるかどうか
+    def judge_same_card(self, same_nums):
+        numbers = self.get_only_numbers()
+        # カード重複調査
+        for n in numbers:
+            # それぞれの数値のダブりをカウントする
+            if numbers.count(n) == same_nums:
+                return True
+        return False
+
+    # カード内のペアの数をカウント
+    def get_pair_count(self):
+        numbers = self.get_only_numbers()
+        count = 0
+        # ペア数を調査
+        for n in numbers:
+            # それぞれの数値のダブりをカウントする
+            if numbers.count(n) == 2:
+                count += 1
+        # カウント重複の削除
+        count //= 2
+        return count
+
+    # ゲームの判定
+    def judge(self):
+        hand_name = 'ブタ'
+        score = 0
+        # 役の判定
+        if self.hand[0]['num'] == 9 and self.judge_straight_flush():
+            # 同じ種類のカードで10, J, Q, K, Aと並んだらロイヤルストレートフラッシュ
+            hand_name = 'ロイヤルストレートフラッシュ'
+            score = 10000
+        elif self.judge_straight_flush():
+            # 同じ種類のカードで連続していたらストレートフラッシュ
+            hand_name = 'ストレートフラッシュ'
+            score = 5000
+        elif self.judge_same_card(4) == True:
+            # 同じ数字のカードが4つ
+            hand_name = 'フォーカード'
+            score = 2500
+        elif self.judge_same_card(3) == True and self.judge_same_card(2) == True:
+            # フルハウス
+            hand_name = 'フルハウス'
+            score = 2000
+        elif self.judge_flush():
+            # 全て同じ種類のカード
+            hand_name = 'フラッシュ'
+            score = 1500
+        elif self.judge_straight():
+            # 番号が連続
+            hand_name = 'ストレート'
+            score = 1200
+        elif self.judge_same_card(3) == True:
+            # スリーカード
+            hand_name = 'スリーカード'
+            score = 1000
+        elif self.get_pair_count() == 2:
+            # ツーペア
+            hand_name = 'ツーペア'
+            score = 800
+        elif self.get_pair_count() == 1:
+            # ワンペア
+            hand_name = 'ワンペア'
+            score = 100
+        print('{}score:{}'.format(hand_name, score))
 
 class PokerGame:
     # ポーカーのメイン処理クラス
