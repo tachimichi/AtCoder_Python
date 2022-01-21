@@ -10,7 +10,9 @@
                 "isDefault": true
             },
             "type": "shell",
-            "command": "${workspaceFolder}/script/cptest.ps1",
+            "command": [
+                "${workspaceFolder}/scripts/cptest.ps1",
+            ],
             "args": [
                 "${fileBasenameNoExtension}"
             ]
