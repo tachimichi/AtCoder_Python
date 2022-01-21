@@ -14,7 +14,8 @@
                 "${workspaceFolder}/scripts/cptest.ps1",
             ],
             "args": [
-                "${fileBasenameNoExtension}"
+                "${fileBasenameNoExtension}",
+                "${relativeFileDirname}"
             ]
         }
     ]
