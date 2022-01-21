@@ -1,9 +1,8 @@
 
 # TODO
-# * ABC235 A - Rotate
+# * ABC234 B - Climbing Takahashi
 
-num = input()
-a = int(num[0] + num[1]+ num[2])
-b = int(num[1] + num[2]+ num[0])
-c = int(num[2] + num[0]+ num[1])
-print(a + b + c)
+n = input()
+h = map(int, input.split())
+print(n)
+print(h)
