@@ -1,3 +1,6 @@
+from cgitb import reset
+
+
 print('**************************************')
 #  =================================
 # デバッガーの使用
@@ -322,8 +325,174 @@ print(r)
 
 print('**************************************')
 #  =================================
+# 位置引数のタプル化
 # 
 '''
+def say(aisatsu, *words):
+    print(aisatsu)
+    for word in words:
+        print(word)
+
+say('hello', 'everyone', 'alice', 'bob')
+t = ('alice', 'bob', 'cindy')
+say('hello', *t)
+'''
+print('**************************************')
+#  =================================
+# キーワード引数の辞書化
+# 
+'''
+# 引数が複数（デフォルト引数を定義）
+def menu(**kwargs):
+    print(kwargs)
+    for k, v in kwargs.items():
+        print(k, v)
+    
+# menu(food='rice', drink='water', dessert='chips')
+
+d = {
+    'entree' : 'rice',
+    'dink' : 'ice coffee',
+    'dessert' : 'icecream'
+}
+# 辞書が展開されて表示される
+menu(**d)
+'''
+'''
+# 引数、タプル、辞書を全部
+def menu(food, *args,**kwargs):
+    print(food)
+    print(args)
+    print(kwargs)
+
+menu('banana', 'apple', 'orange', drink='water', dessert='chips')
+'''
+print('**************************************')
+#  =================================
+# Docstring
+# 
+'''
+def example_func(param1, param2):
+    """
+    説明：
+    変数の説明：
+    戻り値：
+    """
+    print(param1)
+    print(param2)
+    return True
+
+print(example_func.__doc__)
+'''
+print('**************************************')
+#  =================================
+# 関数内関数
+# 
+'''
+def outer(a, b):
+    
+    def plus(x, y):
+        return x + y
+    
+    r1 = plus(a, b)
+    r2 = plus(b, b)
+    print(r1 + r2)
+
+outer(1, 2)
+
+'''
+print('**************************************')
+#  =================================
+# クロージャー
+# 
+'''
+def outer(a, b):
+    
+    def inner():
+        return a + b
+    return inner
+# <function outer.<locals>.inner at 0x0000023E7E8FF670>
+# print(outer(1, 2))
+# クロージャー：現時点で引数を確定させておく。後ほど実行する
+f = outer(1, 2)
+r = f()
+print(r)
+'''
+'''
+# 例：
+def circle_area_func(pi):
+    def circle_area(radius):
+        return pi * radius * radius
+    
+    return circle_area
+
+cal1 = circle_area_func(3.14)
+cal2 = circle_area_func(3.141592)
+
+print(cal1(10))
+print(cal2(10))
+'''
+print('**************************************')
+#  =================================
+# デコレーター：ある関数を修飾するための関数とその仕組み
+# 
+'''
+def print_info(func):
+    
+    def wrapper(*args, **kwargs):
+        print('start')
+        result = func(*args, **kwargs)
+        print('end')
+        return result
+    
+    return wrapper
+
+def print_more(func):
+    
+    def wrapper(*args, **kwargs):
+        print('func:', func.__name__)
+        print('args:', args)
+        print('kwargs:', kwargs)
+        result = func(*args, **kwargs)
+        print('result:', result)
+        print('end')
+        return result
+    
+    return wrapper
+
+print('*****')
+@print_info
+def add(a, b):
+    return a + b
+
+# f = print_info(add)
+# r = f(10, 20)
+# print(r)
+
+r = add(10, 20)
+print(r)
+print('*****')
+
+@print_info
+def sub(a, b):
+    return a - b
+r = sub(10, 20)
+print(r)
+
+print('*****')
+@print_more
+def sub(a, b):
+    return a - b
+r = sub(10, 20)
+print(r)
+
+print('*****')
+@print_info
+@print_more
+def sub(a, b):
+    return a - b
+r = sub(10, 20)
+print(r)
 '''
 print('**************************************')
 #  =================================
