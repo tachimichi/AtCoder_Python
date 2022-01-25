@@ -1,4 +1,6 @@
 from cgitb import reset
+from cmath import log
+from random import sample
 
 
 print('**************************************')
@@ -496,41 +498,246 @@ print(r)
 '''
 print('**************************************')
 #  =================================
+# ラムダ
+# 
+# def 名前(引数, 引数, ...):
+#     return 式
+# ================
+# 名前 = lambda 引数, 引数, ...: 式
+'''
+lst = ['Mon', 'Tue', 'Wed', 'Thu', 'fri', 'sat', 'Sun']
+
+def change_words(words, func):
+    for word in words:
+        print(func(word))
+
+# def sample_func(word):
+#     return word.capitalize()
+# lambda 引数 : リターンする内容
+sample_func = lambda word: word.capitalize()
+
+change_words(lst, sample_func)
+# ラムダ関数を引数に
+change_words(lst, lambda word: word.capitalize())
+change_words(lst, lambda word: word.lower())
+
+'''
+print('**************************************')
+#  =================================
+# ジェネレータ
+# 
+# イテレータの要素：反復処理するときに、一要素を取得して生成
+
+# lst = ['Mon', 'Tue', 'Wed', 'Thu', 'fri', 'sat', 'Sun']
+# for i in lst:
+#     print(i)
+'''
+
+def count(num=10):
+    for _ in range(num):
+        yield 'run'
+
+print('=========')
+def days():
+    yield 'Mon'
+    yield 'Tue'
+    yield 'Wed'
+    yield 'Thu'
+    yield 'Fri'
+    yield 'Sat'
+    yield 'Sun'
+
+# for g in days():
+#     print(g)
+    
+print('=========')
+g = days()
+c = count()
+
+print(next(g))
+print(next(c))
+print(next(c))
+print(next(c))
+print(next(c))
+print(next(c))
+print(next(c))
+print(next(g))
+print(next(c))
+print(next(c))
+print(next(g))
+print(next(c))
+print(next(c))
+
+'''
+print('**************************************')
+#  =================================
+# リスト内包表記
+# 
+t = (1, 2, 3, 4, 5)
+u = (6, 7, 8, 9,  10)
+
+'''
+r = []
+for i in t:
+    if i % 2 == 0:
+        r.append(i)
+print(r)
+
+r = [i for i in t if i % 2 == 0]
+print(r)
+'''
+# リスト内包表記
+'''
+r = []
+for i in t:
+    for j in u:
+        r.append(i * j)
+print(r)
+
+r = [i * j for i in t for j in u]
+print(r)
+
+'''
+print('**************************************')
+#  =================================
+# 辞書包括表記
+# 
+'''
+w = ['mon', 'tue', 'wed']
+f = ['coffee', 'milk', 'water']
+
+# zip関数による辞書化
+d = {}
+for x, y in zip(w, f):
+    d[x] = y
+print(d)
+'''
+'''
+d = {x: y for x, y in zip(w, f)}
+print(d)
+'''
+print('**************************************')
+#  =================================
+# 集合内包表記
+'''
+s = set()
+
+for i in range(10):
+    s.add(i)
+print(s)
+
+s = {i for i in range(10) if i % 2 == 0}
+print(s)
+
+'''
+print('**************************************')
+#  =================================
+# ジェネレータ内包表記
+# 
+'''
+def g():
+    for i in range(10):
+        yield i
+
+g = g()
+print(type(g))
+print(next(g))
+print(next(g))
+print(next(g))
+print(next(g))
+print(next(g))
+
+g = (i for i in range(10))
+print(type(g))
+print(next(g))
+print(next(g))
+print(next(g))
+
+g = tuple(i for i in range(10))
+print(type(g))
+print(g)
+'''
+print('**************************************')
+#  =================================
+# 名前空間とスコープ
+# 
+'''
+animal = 'cat'
+
+def f():
+    # print(animal)
+    # エラー：UnboundLocalError: local variable 'animal' referenced before assignment
+    # エラー：上のprintが、下のアニマルを参照しようとしているため、順番が逆
+    global animal
+    animal = 'dog'
+    print('local', animal)
+    
+    animal = 'goat'
+    print('local', animal)
+
+    print('local', locals())
+
+print('global', animal)
+f()
+print('global', animal)
+'''
+print('**************************************')
+#  =================================
+# 例外処理
+# 
+'''
+lst = list(range(1, 4))
+print(lst)
+i = 5
+
+try: 
+    # lst[i]
+    () + lst
+except IndexError as ex:
+    print('Dont worry')
+    print(ex)
+    print(type(ex))
+except NameError as ex:
+    print(ex)
+except Exception as other:
+    print(other)
+else:
+    # 正常終了した場合、通過
+    print('done')
+finally:
+    print('絶対通過')
+'''
+print('**************************************')
+#  =================================
+# 独自例外の作成
+# 
+'''
+class UppercaseError(Exception):
+    pass
+
+def check():
+    words = ['apple', 'ORANGE', 'banana']
+    for word in words:
+        if word.isupper():
+            raise UppercaseError(word)
+
+check()
+'''
+print('**************************************')
+#  =================================
+# 独自例外の作成
 # 
 '''
 '''
 print('**************************************')
 #  =================================
+# 独自例外の作成
 # 
 '''
 '''
 print('**************************************')
 #  =================================
-# 
-'''
-'''
-print('**************************************')
-#  =================================
-# 
-'''
-'''
-print('**************************************')
-#  =================================
-# 
-'''
-'''
-print('**************************************')
-#  =================================
-# 
-'''
-'''
-print('**************************************')
-#  =================================
-# 
-'''
-'''
-print('**************************************')
-#  =================================
+# 独自例外の作成
 # 
 '''
 '''
