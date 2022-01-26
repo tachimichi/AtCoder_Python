@@ -4,17 +4,33 @@
 s = input()
 t = input()
 
-alphabet = 'abcdefghijklmnopqrstuvwxyz'
+alphabet = list('abcdefghijklmnopqrstuvwxyz')
 
-print(s, t, alphabet)
+# print(s, t, alphabet)
 
-a = []
-count = 0
+count = alphabet.index(t[0]) - alphabet.index(s[0])
+if count < 0:
+    count += 26
 
-print(len(s))
+# print('count', count)
 
-
+isSame = True
 for i in range(len(s)):
-    print(i)
+    s_index = alphabet.index(s[i])
+    t_index = alphabet.index(t[i])
 
-    si = alphabet.index
+    kyori = 0
+    if s_index > t_index:
+        kyori = t_index + 26 - s_index
+    else:
+        kyori = t_index - s_index
+    
+    # print('kyori', kyori)
+        
+    if not count == kyori:
+        isSame = False
+
+print('Yes' if isSame else 'No')
+
+
+
