@@ -1,8 +1,20 @@
 # TODO
-# * ABC230 B - Triple Metre
+# * ABC229 B - Hard Calculation
 
-s = input()
-t = 'oxxoxxoxxoxxoxxoxxoxxoxxoxx'
-# 三項演算子
-# print('Yes' if t in s else 'No')
-print('Yes' if not t.find(s) == -1 else 'No')
+a, b = input().split()
+# print(a)
+# print(b)
+
+# * 文字列のソート（逆）
+a = list(a[::-1])
+b = list(b[::-1])
+
+# print(a)
+# print(b)
+
+isHard = False
+for i in range(min(len(a), len(b))):
+    if int(a[i]) + int(b[i]) >= 10:
+        isHard = True
+
+print('Hard' if isHard else 'Easy') 
