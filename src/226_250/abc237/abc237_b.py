@@ -1,18 +1,19 @@
 
 # TODO
-# * ABC236 B - Who is missing?
+# * ABC237 B - Matrix Transposition
 
-n = int(input())
-a = list(map(int, input().split()))
+h, w = map(int, input().split())
+lst = []
+for i in range(0, h):
+    a = list(map(int, input().split()))
+    lst.append(a)
+# print(lst)
+# print(len(lst))
 
-# 要素の中身と数を指定して、配列を生成
-lst = [0] * n
-
-for i in a:
-    lst[i-1] += 1
-
-# enumerate関数を使用することで、インデックスを使用可能に
-for i, l in enumerate(lst):
-    if l == 3:
-        print(i+1)
-        break
+ans = []
+for i in range(w):
+    a = []
+    for j in range(h):
+        a.append(lst[j][i])
+    ans.append(a)
+    print(*ans[i])
