@@ -2,15 +2,18 @@
 # *   002 - Encyclopedia of Parentheses
 
 from itertools import product
+
 n = int(input())
 ans = []
- 
+
 if n % 2 == 0: # 奇数のときは正しいカッコ列を生成できない
+
     for i in product([0, 1], repeat = n): # 0 -> （ , 1 -> ）
         if i.count(1) == n // 2: # 0, 1の個数が同じ時に判定を始める
             zero_count = 0
             Bool = True
             word = ""
+            
             for j in range(len(i)):
                 if i[j] == 0:
                     zero_count += 1
